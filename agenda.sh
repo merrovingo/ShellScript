@@ -26,9 +26,15 @@ function nueva_agenda(){
 	clear
 	echo "Ingresa el nombre para tu agenda:"
 	read AGENDA
-	touch $AGENDA
-	echo "Agenda creada correctamente"
-	sh agenda.sh
+	if test $(ls $AGENDA) = $AGENDA
+		then
+		echo "La agenda ya existe, prueba nuevamente con otro nombre"
+		sh agenda.sh
+	else
+		touch $AGENDA
+		echo "Agenda creada correctamente"
+		sh agenda.sh
+	fi
 }
 function nueva_busqueda(){
 	clear
